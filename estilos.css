@@ -25,6 +25,15 @@ header {
 .logo {
     font-size: 28px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
 }
 
 nav {
@@ -36,10 +45,17 @@ nav a {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    font-weight: bold;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: 0.3s ease;
 }
 
 nav a:hover {
     color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
+    transform: translateY(-2px);
 }
 
 
@@ -107,13 +123,25 @@ button {
 button:hover {
     transform: scale(1.05);
 }
-
-
-/* MOTOCICLETA */
-
+/* LOGO PRINCIPAL */
 .hero-imagen {
-    font-size: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.hero-imagen img {
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.hero-imagen img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.55));
+}
+
 /* SERVICIOS */
 
 .servicios {
@@ -121,12 +149,10 @@ button:hover {
     background: #0f172a;
 }
 
-
 .titulo-servicios {
     text-align: center;
     margin-bottom: 60px;
 }
-
 
 .titulo-servicios p {
     color: #fbbf24;
@@ -158,14 +184,27 @@ button:hover {
 
 .tarjeta {
     background: #1e293b;
-
     padding: 35px;
-
     border-radius: 20px;
-
     width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: aparecer 0.8s ease forwards;
+}
 
-    transition: 0.3s;
+.tarjeta:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.18);
+}
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -475,4 +514,96 @@ button:hover {
         bottom: 15px;
         right: 15px;
     }
+}
+/* ================================
+   FORMULARIO DE PEDIDOS
+================================ */
+
+.pedido {
+    padding: 100px 8%;
+    background: #111827;
+    text-align: center;
+}
+
+.pedido form {
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 40px;
+    background: #1e293b;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.pedido input,
+.pedido select,
+.pedido textarea {
+    width: 100%;
+    padding: 15px 18px;
+    background: #0f172a;
+    color: white;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.pedido input:focus,
+.pedido select:focus,
+.pedido textarea:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+}
+
+.pedido input::placeholder,
+.pedido textarea::placeholder {
+    color: #94a3b8;
+}
+
+.pedido select {
+    cursor: pointer;
+}
+
+.pedido textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.pedido button {
+    margin-top: 10px;
+    background: #fbbf24;
+    color: #020617;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.pedido button:hover {
+    background: #ffd04a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.25);
+}
+@media (max-width: 768px) {
+
+    .pedido {
+        padding: 70px 5%;
+    }
+
+    .pedido form {
+        padding: 25px;
+    }
+
+    .pedido input,
+    .pedido select,
+    .pedido textarea {
+        font-size: 16px;
+    }
+
 }
