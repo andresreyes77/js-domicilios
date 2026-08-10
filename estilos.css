@@ -1,7 +1,22 @@
+/* ========================================
+   CONFIGURACIÓN GENERAL
+======================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -10,16 +25,17 @@ body {
     color: white;
 }
 
-
-/* BARRA SUPERIOR */
+/* ========================================
+   BARRA SUPERIOR
+======================================== */
 
 header {
     width: 100%;
     padding: 25px 8%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
 }
 
 .logo {
@@ -28,6 +44,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
+    white-space: nowrap;
 }
 
 .logo img {
@@ -38,7 +55,8 @@ header {
 
 nav {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 15px;
 }
 
 nav a {
@@ -58,24 +76,24 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-
-/* PORTADA */
+/* ========================================
+   PORTADA
+======================================== */
 
 .hero {
     min-height: 80vh;
-
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    gap: 50px;
     padding: 60px 8%;
 }
 
-
 .hero-text {
+    width: 100%;
     max-width: 600px;
 }
-
 
 .pequeno {
     color: #fbbf24;
@@ -84,18 +102,15 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-
 .hero h1 {
-    font-size: 70px;
+    font-size: clamp(42px, 6vw, 70px);
     line-height: 1.05;
     margin-bottom: 25px;
 }
 
-
 .hero h1 span {
     color: #fbbf24;
 }
-
 
 .descripcion {
     font-size: 20px;
@@ -104,34 +119,37 @@ nav a:hover {
     margin-bottom: 35px;
 }
 
-
 button {
     background: #fbbf24;
     border: none;
-
     padding: 16px 28px;
-
     border-radius: 10px;
-
     font-size: 18px;
     font-weight: bold;
-
     cursor: pointer;
+    transition: 0.3s ease;
 }
-
 
 button:hover {
     transform: scale(1.05);
 }
-/* LOGO PRINCIPAL */
+
+/* ========================================
+   LOGO PRINCIPAL
+======================================== */
+
 .hero-imagen {
+    width: 100%;
+    max-width: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .hero-imagen img {
     width: 300px;
+    max-width: 100%;
     height: auto;
     object-fit: contain;
     transition: transform 0.4s ease, filter 0.4s ease;
@@ -142,7 +160,9 @@ button:hover {
     filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.55));
 }
 
-/* SERVICIOS */
+/* ========================================
+   SERVICIOS
+======================================== */
 
 .servicios {
     padding: 100px 8%;
@@ -160,75 +180,60 @@ button:hover {
     letter-spacing: 2px;
 }
 
-
 .titulo-servicios h2 {
-    font-size: 45px;
+    font-size: clamp(32px, 5vw, 45px);
     margin: 15px 0;
 }
-
 
 .titulo-servicios span {
     color: #9ca3af;
     font-size: 18px;
 }
 
-
-/* TARJETAS */
+/* ========================================
+   TARJETAS
+======================================== */
 
 .tarjetas {
     display: flex;
     justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
 }
-
 
 .tarjeta {
     background: #1e293b;
     padding: 35px;
     border-radius: 20px;
-    width: 30%;
+    width: calc(33.333% - 20px);
+    min-width: 250px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: aparecer 0.8s ease forwards;
 }
 
 .tarjeta:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 30px rgba(251, 191, 36, 0.18);
 }
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-.tarjeta:hover {
-    transform: translateY(-10px);
-}
-
 
 .icono {
     font-size: 50px;
     margin-bottom: 20px;
 }
 
-
 .tarjeta h3 {
     font-size: 25px;
     margin-bottom: 15px;
 }
 
-
 .tarjeta p {
     color: #cbd5e1;
     line-height: 1.6;
 }
+
+/* ========================================
+   BOTÓN DOMICILIO
+======================================== */
+
 .boton-domicilio {
     display: inline-block;
     background: #ffbf1f;
@@ -245,7 +250,89 @@ button:hover {
     transform: translateY(-3px);
     background: #ffd04a;
 }
-/* SECCIÓN CONTACTO */
+
+/* ========================================
+   FORMULARIO DE PEDIDOS
+======================================== */
+
+.pedido {
+    width: 100%;
+    padding: 100px 8%;
+    background: #111827;
+    text-align: center;
+}
+
+.pedido form {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 40px;
+    background: #1e293b;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.pedido input,
+.pedido select,
+.pedido textarea {
+    width: 100%;
+    padding: 15px 18px;
+    background: #0f172a;
+    color: white;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.pedido input:focus,
+.pedido select:focus,
+.pedido textarea:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+}
+
+.pedido input::placeholder,
+.pedido textarea::placeholder {
+    color: #94a3b8;
+}
+
+.pedido select {
+    cursor: pointer;
+}
+
+.pedido textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.pedido button {
+    width: 100%;
+    margin-top: 10px;
+    background: #fbbf24;
+    color: #020617;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.pedido button:hover {
+    background: #ffd04a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.25);
+}
+
+/* ========================================
+   CONTACTO
+======================================== */
 
 .contacto {
     padding: 100px 8%;
@@ -254,7 +341,7 @@ button:hover {
 }
 
 .contacto h2 {
-    font-size: 45px;
+    font-size: clamp(32px, 5vw, 45px);
     margin: 15px 0;
 }
 
@@ -307,7 +394,10 @@ button:hover {
 .contacto-card a:hover {
     text-decoration: underline;
 }
-/* SECCIÓN NOSOTROS */
+
+/* ========================================
+   NOSOTROS
+======================================== */
 
 .nosotros {
     padding: 100px 8%;
@@ -316,7 +406,7 @@ button:hover {
 }
 
 .nosotros h2 {
-    font-size: 45px;
+    font-size: clamp(32px, 5vw, 45px);
     margin: 15px 0;
 }
 
@@ -358,7 +448,10 @@ button:hover {
     line-height: 1.5;
     margin-top: 15px;
 }
-/* FOOTER */
+
+/* ========================================
+   FOOTER
+======================================== */
 
 .footer {
     background: #020617;
@@ -439,6 +532,11 @@ button:hover {
     color: #64748b;
     font-size: 14px;
 }
+
+/* ========================================
+   WHATSAPP FLOTANTE
+======================================== */
+
 .whatsapp-flotante {
     position: fixed;
     bottom: 25px;
@@ -461,186 +559,334 @@ button:hover {
 .whatsapp-flotante:hover {
     transform: scale(1.1);
 }
-/* ================================
-   ADAPTACIÓN PARA CELULARES
-   ================================ */
+
+/* ========================================
+   TABLETS
+======================================== */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 20px 5%;
+    }
+
+    .hero {
+        padding: 60px 5%;
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero-imagen img {
+        width: 240px;
+    }
+
+    .tarjeta {
+        width: calc(50% - 15px);
+    }
+
+    .servicios,
+    .pedido,
+    .contacto,
+    .nosotros {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+/* ========================================
+   CELULARES
+======================================== */
 
 @media (max-width: 768px) {
 
-    /* Contenedor principal */
-    .contenedor {
-        width: 90%;
-        margin: auto;
+    /* Página general */
+    body {
+        width: 100%;
+        overflow-x: hidden;
     }
 
-    /* Encabezado */
+    /* ENCABEZADO */
     header {
-        padding: 15px 0;
-    }
-
-    /* Menú */
-    nav ul {
+        width: 100%;
+        padding: 15px 20px;
         flex-direction: column;
-        gap: 10px;
+        justify-content: center;
         text-align: center;
+        gap: 15px;
     }
 
-    /* Títulos */
-    h1 {
-        font-size: 28px;
-    }
-
-    h2 {
+    .logo {
         font-size: 24px;
     }
 
-    /* Texto */
-    p {
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    /* PORTADA */
+    .hero {
+        width: 100%;
+        min-height: auto;
+        padding: 55px 20px 60px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 35px;
+    }
+
+    .hero-text {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .pequeno {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 11vw, 48px);
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .descripcion {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .boton-domicilio {
+        padding: 14px 22px;
         font-size: 16px;
     }
 
-    /* Botones */
-    button,
-    .boton {
+    .hero-imagen {
         width: 100%;
-        max-width: 300px;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    /* WhatsApp */
-    .whatsapp-flotante {
-        width: 48px;
-        height: 48px;
-        font-size: 22px;
-        bottom: 15px;
-        right: 15px;
+    .hero-imagen img {
+        width: 180px;
+        max-width: 65%;
+        height: auto;
     }
-    /* MEJORA DE PORTADA EN CELULAR */
-.hero {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    padding: 50px 20px;
-    gap: 30px;
-}
 
-.hero-text {
-    width: 100%;
-    max-width: 100%;
-}
+    /* SERVICIOS */
+    .servicios {
+        padding: 70px 20px;
+    }
 
-.hero h1 {
-    font-size: 42px;
-}
+    .titulo-servicios {
+        margin-bottom: 40px;
+    }
 
-.descripcion {
-    font-size: 17px;
-}
+    .titulo-servicios h2 {
+        font-size: 32px;
+    }
 
-.hero-imagen {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .titulo-servicios span {
+        display: block;
+        font-size: 16px;
+        line-height: 1.5;
+    }
 
-.hero-imagen img {
-    width: 170px;
-    max-width: 60%;
-}
+    .tarjetas {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 
-.boton-domicilio {
-    margin: 0 auto;
-}   
-}
-/* ================================
-   FORMULARIO DE PEDIDOS
-================================ */
+    .tarjeta {
+        width: 100%;
+        max-width: 400px;
+        min-width: 0;
+        padding: 28px;
+    }
 
-.pedido {
-    padding: 100px 8%;
-    background: #111827;
-    text-align: center;
-}
-
-.pedido form {
-    max-width: 600px;
-    margin: 40px auto 0;
-    padding: 40px;
-    background: #1e293b;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.pedido input,
-.pedido select,
-.pedido textarea {
-    width: 100%;
-    padding: 15px 18px;
-    background: #0f172a;
-    color: white;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    font-size: 16px;
-    outline: none;
-    transition: 0.3s ease;
-}
-
-.pedido input:focus,
-.pedido select:focus,
-.pedido textarea:focus {
-    border-color: #fbbf24;
-    box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
-}
-
-.pedido input::placeholder,
-.pedido textarea::placeholder {
-    color: #94a3b8;
-}
-
-.pedido select {
-    cursor: pointer;
-}
-
-.pedido textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.pedido button {
-    margin-top: 10px;
-    background: #fbbf24;
-    color: #020617;
-    border: none;
-    padding: 16px;
-    border-radius: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.pedido button:hover {
-    background: #ffd04a;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.25);
-}
-@media (max-width: 768px) {
-
+    /* FORMULARIO */
     .pedido {
-        padding: 70px 5%;
+        width: 100%;
+        padding: 70px 20px;
     }
 
     .pedido form {
+        width: 100%;
+        max-width: 500px;
         padding: 25px;
+        margin-top: 30px;
     }
 
     .pedido input,
     .pedido select,
     .pedido textarea {
         font-size: 16px;
+        padding: 14px 15px;
     }
 
+    .pedido button {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    /* CONTACTO */
+    .contacto {
+        padding: 70px 20px;
+    }
+
+    .contacto-info {
+        margin-top: 35px;
+        gap: 18px;
+    }
+
+    .contacto-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* NOSOTROS */
+    .nosotros {
+        padding: 70px 20px;
+    }
+
+    .nosotros > p {
+        font-size: 16px;
+    }
+
+    .nosotros-datos {
+        margin-top: 35px;
+        gap: 18px;
+    }
+
+    .nosotros-datos div {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* FOOTER */
+    .footer {
+        padding: 55px 20px 25px;
+    }
+
+    .footer-logo {
+        font-size: 26px;
+    }
+
+    .footer-contacto {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-redes {
+        gap: 10px;
+    }
+
+    .footer-redes a {
+        padding: 9px 13px;
+        font-size: 14px;
+    }
+
+    .footer-frase {
+        font-size: 14px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp-flotante {
+        width: 48px;
+        height: 48px;
+        font-size: 21px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* ========================================
+   CELULARES PEQUEÑOS
+======================================== */
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 12px 15px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav {
+        gap: 2px;
+    }
+
+    nav a {
+        font-size: 13px;
+        padding: 7px 8px;
+    }
+
+    .hero {
+        padding: 45px 15px 50px;
+        gap: 25px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .descripcion {
+        font-size: 15px;
+    }
+
+    .hero-imagen img {
+        width: 150px;
+        max-width: 60%;
+    }
+
+    .servicios,
+    .pedido,
+    .contacto,
+    .nosotros {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .titulo-servicios h2 {
+        font-size: 29px;
+    }
+
+    .pedido form {
+        padding: 20px 15px;
+    }
+
+    .tarjeta {
+        padding: 24px 20px;
+    }
+
+    .footer-redes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-redes a {
+        width: 180px;
+    }
 }
